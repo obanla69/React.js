@@ -1,11 +1,11 @@
 import React from 'react'
-import { useGetAllNowPlayingMoviesQuery } from '../service/api';
-import style from "./NowPlayingMovie.module.css"
+import { useGetAllPopularMoviesQuery } from '../service/api';
+import style from "../components/Popular.module.css"
 
 const img = process.env.REACT_APP_MOVIE_IMAGES
 
-    const NowPlayingMovie = () =>{
-        const {data,isLoading,isError} = useGetAllNowPlayingMoviesQuery();
+    const PopularMovie = () =>{
+        const {data,isLoading,isError} = useGetAllPopularMoviesQuery()
         console.log(data)
 
         if(isLoading){
@@ -15,6 +15,8 @@ const img = process.env.REACT_APP_MOVIE_IMAGES
             return <div><h1> An Error occured</h1></div>
         }
         return(
+            <>
+            <h1>POPULAR</h1>
             <div className = {style.mainWrapper}>
                 <div className = {style.container}>
                     {data?.results?.map((movie)=>(
@@ -27,10 +29,11 @@ const img = process.env.REACT_APP_MOVIE_IMAGES
                     ))}
                 </div>
             </div>
+            </>
             
         )
 
     }
 
 
-export default NowPlayingMovie
+export default PopularMovie;

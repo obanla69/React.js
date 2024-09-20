@@ -14,7 +14,11 @@ export const movieApi = createApi({
     getAllNowPlayingMovies: builder.query({
       query: () => (`/now_playing?api_key=${apiKey}`),
     }),
+    getAllPopularMovies: builder.query({
+      query: () => (`/popular?api_key=${apiKey}`),
+    }),
   }),
 });
 
-export const { useGetAllNowPlayingMoviesQuery } = movieApi;
+export const { useGetAllNowPlayingMoviesQuery, useGetAllPopularMoviesQuery } = movieApi;
+
